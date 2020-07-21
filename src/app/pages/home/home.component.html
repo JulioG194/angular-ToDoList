@@ -1,0 +1,48 @@
+<div class="m-5">
+
+    <h1>Gestion de Proyectos</h1>
+    <hr>
+
+    <cdk-virtual-scroll-viewport itemSize="50" class="list-container list-group">
+
+        <div class="list-group-item" *cdkVirtualFor="let proyecto of proyectos; let i = index; let conteo = count">
+            Proyecto {{ i + 1 }} / {{ conteo }}
+        </div>
+
+
+
+    </cdk-virtual-scroll-viewport>
+
+</div>
+
+
+<div class="m-5">
+    <h1>Paises</h1>
+    <hr>
+
+    <ul class="list-group" cdkDropList (cdkDropListDropped)="drop($event)">
+        <li class="list-group-item" *ngFor="let pais of paises" cdkDrag>
+            {{ pais.name }}
+
+        </li>
+
+
+    </ul>
+
+
+</div>
+
+<div class="m-5">
+    <button class="btn btn-outline-success" (click)="mostrar()">
+            Tareas
+    </button>
+
+</div>
+
+<div class="m-5">
+    <button class="btn btn-outline-danger" (click)="salir()">
+        Salir
+        </button>
+
+
+</div>

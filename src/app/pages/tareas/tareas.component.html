@@ -1,0 +1,60 @@
+<h1>Listado de Tareas</h1>
+<hr>
+
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/tarea/nueva" class="btn btn-primary">
+      <i class="fa fa-plus"></i>
+      Agregar
+    </button>
+    </div>
+</div>
+
+<table class="table mt-3 animated fadeIn faster">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tarea</th>
+            <th scope="col">Encargado</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Herramientas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tarea of tareas; let i = index">
+            <th scope="row">{{ i + 1}}</th>
+            <td>{{ tarea.nombre }}</td>
+            <td>{{ tarea.encargado }}</td>
+            <td>
+                <label *ngIf="!tarea.estado" class="badge badge-warning"> Realizado </label>
+                <label *ngIf="tarea.estado" class="badge badge-success"> En proceso </label>
+            </td>
+
+            <td>
+                <button class="btn btn-info mr-1" [routerLink]="['/tarea', tarea.id]">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-3x fa-fw"></i>
+    </p>
+</div>
+
+<div class="alert alert-info text-center mt-3">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>
